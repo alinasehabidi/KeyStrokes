@@ -1,0 +1,33 @@
+{
+   "background": {
+      "page": "background.html",
+      "persistent": true
+   },
+   "browser_action": {
+      "default_icon": "img/icon.png",
+      "default_title": "KeyStroke"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "css": [ "style.css" ],
+      "js": [ "jquery-2.2.3.min.js", "js/jquery.auto-complete.js", "js/mousetrap.js", "js/mousetrap-pause.min.js", "js/sanitize.js", "js/relaxed.js", "content_script.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self'",
+   "description": "Custom keystrokes for messages, Gmail, Facebook.",
+   "icons": {
+      "128": "img/icon_message.png",
+      "16": "img/icon_message.png",
+      "48": "img/icon_message.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAze1c5xpMl0Y4dCJuGRwrr9WyvcSmdHnKPJAuA5ijISiEZA+jj/AffDozCCykc1u+G1YTwU1A5LEZ313nISvgP3j0h0OUI05LRFK71jeKxYQ2gOpGqWyjB9f1NXmROHBdUc/im+Sj/iZInNGwdQFTgCp6a7uaLGNTeM+ElVqXJlkHohy87M6QAKtBpjaR6bsR0Zu53MJopQtM+482JXmsoMRC9NcNFad1aXw1z/qzxPKlUeccT9jt/K15T8vgIB9MmAFy4+6VuRZQSwRJYhqAwbc66yAFKQFh77ycGj8sacukIRNpEoFVArJVSv7eidb9BrVjqBXWp/5ipGjizB9L9QIDAQAB",
+   "manifest_version": 2,
+   "name": "KeyStroke",
+   "options_page": "pages/settings.html",
+   "permissions": [ "activeTab", "tabs", "storage","notifications",
+      "alarms" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.2.3",
+   "web_accessible_resources": [ "img/icon.png", "img/loading.gif" ]
+}

@@ -1,0 +1,28 @@
+{
+    "data":
+    {
+        "ks": {
+                "name": "ali",
+                "snip": "ali",
+                    "subj": "heyalinaseh",
+                "content": "tinyMCE.activeEditor.getContent().trim()"
+        },
+        
+        "ks": 
+        {
+                "name": "ali1",
+                "snip": "ali1",
+                    "subj": "heyalinaseh1",
+                "content" : "tinyMCE.activeEditor.getContent().trim()"
+        },
+
+        "ks": 
+        {
+                "name": "ali2",
+                "snip": "ali2",
+                    "subj": "heyalinaseh1",
+                "content" : "tinyMCE.activeEditor.getContent().trim()"
+        }
+    }
+
+}
