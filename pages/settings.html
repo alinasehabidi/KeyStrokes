@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KeyStroke For Team Falcon</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../jquery-2.2.3.min.js"></script>
+    <script src="../js/tinymce/tinymce.min.js"></script>
+    <script src="../js/mousetrap.min.js"></script>
+    <script src="../js/mousetrap-record.min.js"></script>
+    <script src="../js/sanitize.js"></script>
+    <script src="../js/relaxed.js"></script>
+    <script src="../js/base64.js"></script>
+    <script src="../js/ksdata.js"></script>
+
+<!--    <script src="../track.js"></script>-->
+</head>
+<body>
+
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=338926066458452&ev=PageView&noscript=1"
+/></noscript>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVFFQH"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="left_col">
+    <div class="inner">        
+        <img class="logo" src="../img/m_logo.png" alt="KeyStrokes">   </a>
+        <HR class = "logobefor" WIDTH="100%" COLOR="#00baf2" SIZE="1">
+        <HR class = "logoafter" WIDTH="100%" COLOR="#002970" SIZE="1">
+        <a href="#" id="templ_all" class="page_link selected">My KeyStrokes</a>
+        <a href="#shared" id="templ_shared" class="page_link">Import</a>
+        <a href="#settings" id="settings" class="page_link">Settings</a>
+    </div>
+</div>
+<div id="right_col">
+    <div class="inner">
+        <div id="screen_templ" class="screen">
+            <header dir="ltr">
+                <h1>
+                    <span class="all_specific">My KeyStrokes</span><span class="shared_specific hidden">Imported Keystroke</span> <a href="javascript:void(0)" class="btn shared_specific hidden" id="resync_shared">Import now</a> <a href="javascript:void(0)" class="btn" id="new_templ_btn">New Keystroke</a>
+                    <a href="javascript:void(0)" class="btn hidden" id="del_selected_btn">Delete</a>
+                </h1>
+                <div class="header-extras">
+                    <label>
+                        <input id="search" type="search" placeholder="Search" autocomplete="off">
+                    </label>
+                </div>
+            </header>
+            <p id="first_run_notice" class="hidden" title="Click to dismiss message">For the plugin to start take effect, refresh all pages you want to use KeyStrokes on!</p>
+            <div class="content">
+
+            </div>
+            <p class="notfound hidden">No Keystroke found.</p>
+        </div>
+        <div id="screen_settings" class="screen hidden">
+            <header>
+                <h1>Settings</h1>
+            </header>
+            <div class="content">
+                <div class="warn hidden">Saved! For the changes to take effect, refresh all pages you use Keystroke on!</div>
+                <label><span>Search and Insert Keystroke Shortcut:</span> <input id="shortcut_field" title="Click to change"></label><br>
+                <label><span>Snippet Replace Shortcut:</span> <input id="snippet_field" title="Click to change"></label><br>
+                <!-- <label><span>Text writing direction:</span> -->
+                <!-- <select id="text_dir">                      -->
+                <!-- <option value="ltr">Left to Right</option>  -->
+                <!-- <option value="rtl">Right to Left</option>  --> 
+                </select></label>
+                <label><span>Script</span> 
+                    <select id="new_joiner">                      
+                        <option value="on">on</option>  
+                        <option value="off">off</option>  
+                    </select></label>
+                    <input type="text">
+                <a class="btn hidden" id="reset_settings">Reset Settings</a>
+            </div>
+        </div>
+
+        <div id="loading-spinner" class="hidden">
+            <div class="inline-spinner"></div>
+            <span>Loading...</span>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="overlay-container" class="hidden">
+
+    <div id="new_keystroke_overlay" class="page hidden">
+        <input type="hidden" id="templ_id">
+        <input type="hidden" id="synced_timestamp">
+        <div class="close-button"></div>
+        <h1 class="new_templ_header">New Keystroke</h1>
+        <h1 class="edit_templ_header hidden">Edit Keystroke</h1>
+        <label>Keystroke Name <input id="name" placeholder="For example: Good Morning"></label>
+        <label>Text shortcut (Optional) <input id="snip" placeholder="For example: gm"></label>
+<!--    <label>Subject (Optional, Gmail only) <input id="subj" placeholder=""></label> -->
+        <label>Keystroke Content <textarea id="templ_content"></textarea></label>
+        <a href="javascript:void(0)" class="btn" id="save_keystroke">Save</a> <a href="javascript:void(0)" class="btn" id="save_cancel">Cancel</a>
+        <div class="new_keystroke_popup_divider" >
+            <HR class = "new_keystroke_befor" WIDTH="100%" COLOR="#00baf2" SIZE="5">
+            <HR class = "new_keystroke_after" WIDTH="100%" COLOR="#002970" SIZE="5">
+        </div>
+    </div>
+
+   <div id="share_overlay" class="page hidden">
+        <input type="hidden" id="share_templ_id">
+        <div class="close-button"></div>
+
+    <h1 class="new_templ_header">Share keystroke "<b></b>"</h1> 
+        <p class="share_not_logged_in hidden">To enable sharing, you should log in with your Google Account first.<br></p>
+        <a href="javascript:void(0)" target="_blank" class="share_open_login btn">Open Log In Window</a>
+        <p id="shared_to" class="hidden">Currently shared to:</p>
+        <ul id="shared_list" class="hidden"></ul>
+        <div class="loading_wrap">
+            <div class="inline-spinner"></div>
+            <span>Loading...</span>
+        </div>
+        <input id="share_with_email" class="hidden" type="email" placeholder="Enter Google Account email to share with">
+
+        <a href="javascript:void(0)" class="btn" id="share_keystroke">Send</a> <a href="javascript:void(0)" class="btn" id="share_cancel">Cancel</a>
+    </div>
+
+</div>
+
+
+
+
+<script src="settings.js"></script>
+
+
+    
+</body>
+<footer class="footer">
+    <div class="">
+        <HR class = "befor" WIDTH="100%" COLOR="#00baf2" SIZE="10">
+        <HR class = "after" WIDTH="100%" COLOR="#002970" SIZE="10">
+    </div>
+</footer>
+
+</html>
